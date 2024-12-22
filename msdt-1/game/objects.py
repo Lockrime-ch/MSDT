@@ -92,7 +92,7 @@ class Creature(BaseObject):
         super().update()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pygame.init()
 
     # pygame.display.set_mode((1000, 1000), pygame.RESIZABLE)
@@ -124,9 +124,9 @@ if __name__ == '__main__':
 
     player = Player(100, 100)
     square = StaticObject(300, 100)
-    square.image.fill('YELLOW')
+    square.image.fill("YELLOW")
     bad_guy = Creature(100, 200, ai_types.enemy_2)
-    bad_guy.image.fill('RED')
+    bad_guy.image.fill("RED")
     all_sprites.add(square)
     all_sprites.add(bad_guy)
     all_sprites.add(player)
@@ -146,7 +146,7 @@ if __name__ == '__main__':
                     movex += 1
                 player.move(movex, movey)
         all_sprites.update()
-        screen.fill(pygame.Color('black'))
+        screen.fill(pygame.Color("black"))
         all_sprites.draw(screen)
         pygame.display.flip()
         clock.tick(60)
