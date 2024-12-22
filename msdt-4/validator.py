@@ -1,5 +1,6 @@
 import csv
 import re
+from loguru import logger
 
 regex = {
     "telephone" : "^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$",
@@ -24,6 +25,8 @@ def validate(row: dict) -> bool:
     """
     for column, pattern in regex.items():
         if not re.match(pattern, row[column]):
+            logger.warning(f'Строка не прошла проверку. '
+                           f'Поле {column} имеет некорректное значение "{row[column]}".')
             return False
     return True
 
@@ -35,11 +38,14 @@ def process_csv(n):
         :param n: номер варианта
         :return: список номеров строк не прошедших проверку
     """
+    logger.info('Начало анализа файла на соответствие регулярным выражениям.')
     invalid_rows = []
     with open(f'{n}.csv', newline='', encoding='utf-16') as file:
         reader = csv.DictReader(file, delimiter=';')
         next(reader)
         for row_number, row in enumerate(reader, start=0):
             if not validate(row):
+                logger.warning(f'Проверка провалена в строке {row}.')
                 invalid_rows.append(row_number)
+    logger.success(f'Анализ файла завершен. Найдено {len(invalid_rows)} некорректных строк.')
     return invalid_rows
