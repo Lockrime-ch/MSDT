@@ -2,18 +2,18 @@ import random
 
 
 class MyMap:
-    def __init__(self, biomes, wight=5, height=5, s="-", average_plast=10):
+    def __init__(self, biomes, wight=5, height=5, blank="-", average_plast=10):
         self.wight = wight
         self.height = height
         self.biomes = biomes
-        self._1()
-        self.s = s
+        self.seed_biomes()
+        self.blank = blank
         for i in range(average_plast):
-            self._2()
+            self.spread_biomes()
         for i in range(4):
-            self._4()
+            self.reduce_blanks()
 
-    def _1(self):
+    def seed_biomes(self):
         a = self.biomes
         self.map = []
         counter = 0
@@ -29,7 +29,7 @@ class MyMap:
                 counter += 1
             self.map.append(a)
 
-    def _2(self):
+    def spread_biomes(self):
         for i in range(self.wight):
             for j in range(self.height):
                 a1 = self.map[i][j]
@@ -58,8 +58,8 @@ class MyMap:
             self.map2.append(b)
         self.map = self.map2
 
-    def _3(self):
-        a = self.s
+    def switch_blank_map_tiles(self):
+        a = self.blank
         for i in range(len(self.map)):
             for j in range(len(self.map[0])):
                 if self.map[i][j] == 0:
@@ -68,7 +68,7 @@ class MyMap:
                     self.map[i][j] = 0
 
     def print_me(self):
-        self._3()
+        self.switch_blank_map_tiles()
         for i in self.map:
             b = []
             for j in i:
@@ -77,9 +77,9 @@ class MyMap:
                 print(str(k), end="")
                 print("\033[37m {}".format(""), end="")
             print()
-        self._3()
+        self.switch_blank_map_tiles()
 
-    def returner(self):
+    def return_map(self):
         a = []
         for i in self.map:
             b = []
@@ -91,7 +91,7 @@ class MyMap:
             a.append(b)
         return a
 
-    def _4(self):
+    def reduce_blanks(self):
         for i in range(self.wight):
             for j in range(self.height):
                 a1 = self.map[i][j]
@@ -127,5 +127,5 @@ if __name__ == "__main__":
         biomes1.append(random.choice(biomes))
     ex = MyMap(biomes1, 1000, 1000, ".", 50)
     ex.print_me()
-    # for i in ex.returner():
+    # for i in ex.return_map():
     #     print(i)
