@@ -1,4 +1,6 @@
 import random
+
+
 class MyMap:
     def __init__(self, biomes, wight=5, height=5, s="-", average_plast=10):
         self.wight = wight
@@ -111,6 +113,8 @@ class MyMap:
                 b.append(j[i])
             self.map2.append(b)
         self.map = self.map2
+
+
 if __name__ == "__main__":
     biomes = [("\033[31m{}".format("1"), 3, 2),
              ("\033[32m{}".format("2"), 3, 2),
