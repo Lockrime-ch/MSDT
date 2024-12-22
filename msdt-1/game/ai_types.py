@@ -1,14 +1,14 @@
 import random
 
 
-def enemy_1(self, target, ai_dict):
+def use_enemy_ai_1(self, target, ai_dict):
     if self.distanceTo(target) <= 200:
         self.move((target.x - self.x) / self.distance_to(target),
                   (target.y - self.y) / self.distance_to(target))
     return {}
 
 
-def enemy_2(self, target, ai_dict):
+def use_enemy_ai_2(self, target, ai_dict):
     if self.distance_to(target) <= 200:
         self.move((target.x - self.x) / (self.distanceTo(target) + 1),
                   (target.y - self.y) / (self.distanceTo(target) + 1))

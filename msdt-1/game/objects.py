@@ -33,7 +33,7 @@ class BaseObject(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
-    def distance_to(self, other):
+    def find_distance_to(self, other):
         return ((self.get_x() - other.get_x()) ** 2
                 + (self.get_y() - other.get_y()) ** 2) ** 0.5
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
     player = Player(100, 100)
     square = StaticObject(300, 100)
     square.image.fill("YELLOW")
-    bad_guy = Creature(100, 200, ai_types.enemy_2)
+    bad_guy = Creature(100, 200, ai_types.use_enemy_ai_2)
     bad_guy.image.fill("RED")
     all_sprites.add(square)
     all_sprites.add(bad_guy)
