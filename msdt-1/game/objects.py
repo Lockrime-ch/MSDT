@@ -34,12 +34,12 @@ class BaseObject(pygame.sprite.Sprite):
         self.y = y
 
     def distance_to(self, other):
-        return ((self.get_x() - other.get_x()) ** 2 +
-                (self.get_y() - other.get_y()) ** 2) ** 0.5
+        return ((self.get_x() - other.get_x()) ** 2
+                + (self.get_y() - other.get_y()) ** 2) ** 0.5
 
     def update(self):
-        self.rect.center = (self.x - camera.cam.get_x() + width // 2, self.y -
-                            camera.cam.get_y() + height // 2)
+        self.rect.center = (self.x - camera.cam.get_x() + width // 2,
+                            self.y - camera.cam.get_y() + height // 2)
 
 
 class Player(BaseObject):
