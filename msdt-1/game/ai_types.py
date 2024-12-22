@@ -3,8 +3,8 @@ import random
 
 def enemy_1(self, target, ai_dict):
     if self.distanceTo(target) <= 200:
-        self.move((target.x - self.x) / self.distanceTo(target),
-                  (target.y - self.y) / self.distanceTo(target))
+        self.move((target.x - self.x) / self.distance_to(target),
+                  (target.y - self.y) / self.distance_to(target))
     return {}
 
 

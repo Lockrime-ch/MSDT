@@ -33,7 +33,7 @@ class BaseObject(pygame.sprite.Sprite):
         self.x = x
         self.y = y
 
-    def distanceTo(self, other):
+    def distance_to(self, other):
         return ((self.get_x() - other.get_x()) ** 2 +
                 (self.get_y() - other.get_y()) ** 2) ** 0.5
 
@@ -52,10 +52,10 @@ class Player(BaseObject):
             camera.cam.set_cord(*self.get_cord())
         super().update()
 
-    def getSpeed(self):
+    def get_speed(self):
         return self.speed
 
-    def setSpeed(self, speed):
+    def set_speed(self, speed):
         self.speed = speed
 
     def move(self, x, y):
